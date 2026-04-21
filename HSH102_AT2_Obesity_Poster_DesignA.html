@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSH102 AT2 - Obesity in Australia - Design A</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+    :root {
+      --navy: #0C2340;
+      --navy-mid: #1A3A5C;
+      --teal: #1B7F79;
+      --teal-light: #D4EDEB;
+      --teal-mid: #2A9D97;
+      --amber: #C97D0A;
+      --amber-light: #FEF3DC;
+      --det1: #1A3A6B;
+      --det1-light: #E3EBF6;
+      --det2: #0E5E4A;
+      --det2-light: #D6F0EA;
+      --det3: #7B1F1F;
+      --det3-light: #FAEBE8;
+      --white: #FFFFFF;
+      --off-white: #F7F9FB;
+      --border: #D0D8E4;
+      --text: #111827;
+      --text-mid: #374151;
+      --ref-bg: #EEF1F5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Source Sans 3', Calibri, Arial, sans-serif;
+      background: #CBD5E0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    /* A2 = 420mm x 594mm at 96dpi screen rendering */
+    .poster {
+      width: 1587px;
+      min-height: 2245px;
+      height: auto;
+      background: var(--white);
+      box-shadow: 0 16px 80px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* -- HEADER ----------------------------------------------- */
+    .header {
+      background: var(--navy);
+      padding: 40px 50px 35px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--teal);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .header-accent {
+      width: 10px;
+      height: 150px;
+      background: var(--teal);
+      flex-shrink: 0;
+      border-radius: 4px;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .header-tag {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .header h1 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    .header h1 span {
+      color: #7EC8C4;
+    }
+
+    .header-sub {
+      font-size: 22px;
+      color: #A8C4D8;
+      margin-top: 10px;
+      font-weight: 300;
+      letter-spacing: 0.4px;
+    }
+
+    .header-unit {
+      font-size: 16px;
+      color: #6B8FAD;
+      margin-top: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* -- SIGNIFICANCE BAND ------------------------------------- */
+    .sig-band {
+      background: var(--amber-light);
+      border-top: 4px solid var(--amber);
+      border-bottom: 4px solid var(--amber);
+      padding: 25px 50px;
+      margin-bottom: 0;
+    }
+
+    .sig-band .sig-title {
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--amber);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sig-band p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      max-width: 1400px;
+    }
+
+    .sig-band .stat-inline {
+      font-weight: 700;
+      color: var(--amber);
+    }
+
+    /* -- BODY GRID --------------------------------------------- */
+    .body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      flex: 1;
+    }
+
+    .col {
+      padding: 25px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+
+    .col:last-child {
+      border-right: none;
+    }
+
+    /* -- SECTION HEADING --------------------------------------- */
+    .sec-heading {
+      background: var(--navy);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+    }
+
+    .sec-heading.teal-bg {
+      background: var(--teal);
+    }
+
+    .sec-heading.navy-mid {
+      background: var(--navy-mid);
+    }
+
+    /* -- SUBHEADINGS ------------------------------------------- */
+    .sub-h {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      border-left: 6px solid var(--teal);
+      padding-left: 14px;
+      line-height: 1.3;
+    }
+
+    .sub-h.amber {
+      border-left-color: var(--amber);
+    }
+
+    /* -- BODY TEXT --------------------------------------------- */
+    p.body-text {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-mid);
+      text-align: justify;
+    }
+
+    /* -- CLASSIFICATION TABLE ---------------------------------- */
+    .classif-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .classif-table tr:nth-child(odd) td {
+      background: var(--off-white);
+    }
+
+    .classif-table tr:nth-child(even) td {
+      background: var(--white);
+    }
+
+    .classif-table td {
+      padding: 8px 12px;
+      vertical-align: top;
+      line-height: 1.4;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .classif-table td:first-child {
+      font-weight: 700;
+      color: var(--navy);
+      width: 36%;
+      white-space: nowrap;
+    }
+
+    /* -- STAT BOXES -------------------------------------------- */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-box {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 18px 16px 16px;
+      text-align: center;
+    }
+
+    .stat-box.teal {
+      background: var(--teal);
+    }
+
+    .stat-box .stat-num {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-box .stat-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.4;
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* -- CHART AREA -------------------------------------------- */
+    .chart-container {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 20px 16px;
+    }
+
+    .chart-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      height: 220px;
+      padding: 0 8px;
+    }
+
+    .chart-bar-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .chart-val {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .chart-bar {
+      width: 100%;
+      background: var(--teal);
+      border-radius: 4px 4px 0 0;
+      transition: background 0.2s;
+    }
+
+    .chart-bar.highlight {
+      background: var(--navy);
+    }
+
+    .chart-year {
+      font-size: 11px;
+      color: var(--text-mid);
+      text-align: center;
+      line-height: 1.3;
+      margin-top: 6px;
+    }
+
+    .chart-axis {
+      border-top: 3px solid var(--navy);
+      margin: 0 8px;
+    }
+
+    .chart-caption {
+      font-size: 12px;
+      color: var(--text-mid);
+      font-style: italic;
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.4;
+    }
+
+    /* -- POPULATION TABLE -------------------------------------- */
+    .pop-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    .pop-table thead tr {
+      background: var(--navy);
+    }
+
+    .pop-table thead td {
+      color: var(--white);
+      font-weight: 700;
+      padding: 10px 12px;
+      letter-spacing: 0.6px;
+    }
+
+    .pop-table tbody tr:nth-child(odd) td {
+      background: var(--off-white);
+    }
+
+    .pop-table tbody tr:nth-child(even) td {
+      background: var(--white);
+    }
+
+    .pop-table tbody td {
+      padding: 8px 12px;
+      color: var(--text);
+      line-height: 1.4;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .pop-table tbody td:first-child {
+      font-weight: 600;
+      color: var(--navy-mid);
+    }
+
+    .source-note {
+      font-size: 12px;
+      color: #6B7280;
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    /* -- TEMPORAL TEXT ----------------------------------------- */
+    .temporal-box {
+      background: var(--teal-light);
+      border-radius: 8px;
+      padding: 16px 20px;
+    }
+
+    .temporal-box p {
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--text-mid);
+    }
+
+    /* -- DETERMINANTS ------------------------------------------ */
+    .det-intro {
+      font-size: 14.5px;
+      color: var(--text-mid);
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    .det-box {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    .det-box.d1 {
+      border-color: var(--det1);
+    }
+
+    .det-box.d2 {
+      border-color: var(--det2);
+    }
+
+    .det-box.d3 {
+      border-color: var(--det3);
+    }
+
+    .det-header {
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .det-box.d1 .det-header {
+      background: var(--det1);
+    }
+
+    .det-box.d2 .det-header {
+      background: var(--det2);
+    }
+
+    .det-box.d3 .det-header {
+      background: var(--det3);
+    }
+
+    .det-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--white);
+      flex: 1;
+      white-space: nowrap;
+    }
+
+    .det-pill {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.22);
+      color: var(--white);
+      padding: 4px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .det-body {
+      padding: 25px 20px;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-mid);
+      text-align: justify;
+    }
+
+    .det-box.d1 .det-body {
+      background: var(--det1-light);
+    }
+
+    .det-box.d2 .det-body {
+      background: var(--det2-light);
+    }
+
+    .det-box.d3 .det-body {
+      background: var(--det3-light);
+    }
+
+    /* -- REFERENCES -------------------------------------------- */
+    .ref-band {
+      background: var(--ref-bg);
+      border-top: 6px solid var(--navy);
+      padding: 20px 35px 25px;
+    }
+
+    .ref-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 40px;
+    }
+
+    .ref-item {
+      font-size: 11px;
+      line-height: 1.5;
+      color: #374151;
+      padding-left: 25px;
+      text-indent: -25px;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .poster {
+        box-shadow: none;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    /* -- DOWNLOAD BUTTON STYLES -- */
+    .download-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--navy);
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: var(--teal);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .download-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .download-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .downloading {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+  <div class="poster">
+
+    <!-- ══ HEADER ══ -->
+    <div class="header">
+      <div class="header-inner">
+        <div class="header-accent"></div>
+        <div class="header-text">
+          <div class="header-tag">HSH102 · Disease Epidemiology and Determinants · Deakin University · 2026</div>
+          <h1>OBESITY IN <span>AUSTRALIA</span></h1>
+          <div class="header-sub">Epidemiology, Population Burden and Determinants of Disease</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SIGNIFICANCE BAND ══ -->
+    <div class="sig-band">
+      <div class="sig-title">⚑ Public Health Significance</div>
+      <p>
+        In 2024, overweight and obesity became Australia's <span class="stat-inline">#1 risk factor</span> for total
+        disease burden at <span class="stat-inline">8.3%</span>, surpassing tobacco use for the first time since
+        national monitoring began (AIHW, 2024). The total economic cost was estimated at <span class="stat-inline">AUD
+          $39 billion</span> in 2019, equivalent to 1.9% of GDP, and is projected to exceed
+        <span class="stat-inline">AUD $62 billion</span> by 2030 (Obesity Evidence Hub, 2024). Obesity
+        disproportionately affects Australians experiencing socioeconomic disadvantage, geographic remoteness and
+        structural inequity (AIHW, 2024).
+      </p>
+    </div>
+
+    <!-- ══ THREE-COLUMN BODY ══ -->
+    <div class="body-grid">
+
+      <!-- ══════════ COLUMN 1: DISEASE OVERVIEW ══════════ -->
+      <div class="col">
+        <div class="sec-heading">1. Disease Overview</div>
+
+        <div class="sub-h">What is Obesity?</div>
+        <p class="body-text">
+          Obesity is a chronic, complex, non-communicable disease (NCD) characterised by excessive adipose tissue
+          accumulation that adversely impairs health. Defined as a Body Mass Index (BMI) of 30 kg/m² or above in adults
+          (WHO, 2000), it is a multifactorial condition arising from the sustained interaction of biological,
+          behavioural, environmental, social and commercial determinants, formally recognised as a disease state, not a
+          lifestyle choice, by the Australian Government and international public health authorities (Commonwealth of
+          Australia, 2022). Obesity substantially increases the risk of type 2 diabetes, cardiovascular disease,
+          musculoskeletal disorders, sleep apnoea, chronic kidney disease, and at least 13 forms of cancer (AIHW, 2024).
+        </p>
+
+        <!-- Determinant 1: Environmental (Moved here to balance columns) -->
+        <div class="det-box d1">
+          <div class="det-header">
+            <div class="det-title">Determinant 1: Environmental</div>
+            <div class="det-pill">Environmental</div>
+          </div>
+          <div class="det-body">
+            The physical and food environment in which Australians live, work and travel profoundly shapes eating and
+            physical activity patterns. Car-dependent suburban design, limited walking and cycling infrastructure, and
+            unequal distribution of parks and recreational facilities reduce opportunities for incidental physical
+            activity, particularly in low-income and outer suburban communities (National Obesity Strategy, 2022). Food
+            environments are equally significant: access to affordable nutritious food is markedly limited in remote and
+            low-socioeconomic areas, where fast food outlets and convenience stores outnumber fresh food retailers,
+            creating so-called "food deserts" and "food swamps" (Swinburn et al., 1999; National Obesity Strategy,
+            2022). These <em>obesogenic environments</em>, physical surroundings that promote excess energy intake and
+            limit energy expenditure, are a recognised structural driver of obesity that cannot be addressed through
+            individual behaviour change alone.
+          </div>
+        </div>
+
+        <div class="sub-h">Disease Classification</div>
+        <table class="classif-table">
+          <tr>
+            <td>Disease type</td>
+            <td>Non-communicable disease (NCD); chronic and multifactorial</td>
+          </tr>
+          <tr>
+            <td>Transmission</td>
+            <td>Non-infectious; not transmissible person-to-person</td>
+          </tr>
+          <tr>
+            <td>Measurement</td>
+            <td>BMI ≥30 kg/m² (adults); waist circumference at population level</td>
+          </tr>
+          <tr>
+            <td>Biological basis</td>
+            <td>Dysregulation of energy balance; genetic, hormonal and metabolic factors interact with environmental
+              exposures</td>
+          </tr>
+          <tr>
+            <td>Co-morbidities</td>
+            <td>Type 2 diabetes, CVD, ≥13 cancers, musculoskeletal disorders, sleep apnoea, chronic kidney disease</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- ══════════ COLUMN 2: EPIDEMIOLOGY ══════════ -->
+      <div class="col">
+        <div class="sec-heading teal-bg">2. Epidemiology: Who, When and Where</div>
+
+        <div class="stat-grid">
+          <div class="stat-box">
+            <span class="stat-num">66%</span>
+            <span class="stat-label">of Australian adults live with overweight or obesity (2022)</span>
+          </div>
+          <div class="stat-box teal">
+            <span class="stat-num">32%</span>
+            <span class="stat-label">of adults classified as obese (BMI ≥30 kg/m²)</span>
+          </div>
+          <div class="stat-box teal">
+            <span class="stat-num">26%</span>
+            <span class="stat-label">of children and adolescents aged 2-17 are affected</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">74%</span>
+            <span class="stat-label">of First Nations adults, nearly double the non-Indigenous rate</span>
+          </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="chart-container">
+          <div class="chart-title">Figure 1: Adult Obesity Prevalence in Australia, 1995-2022</div>
+          <div class="chart-bars">
+            <div class="chart-bar-wrap">
+              <div class="chart-val">19%</div>
+              <div class="chart-bar" style="height:46%"></div>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-val">25%</div>
+              <div class="chart-bar" style="height:61%"></div>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-val">28%</div>
+              <div class="chart-bar" style="height:68%"></div>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-val">28%</div>
+              <div class="chart-bar" style="height:68%"></div>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-val">31%</div>
+              <div class="chart-bar" style="height:76%"></div>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-val">32%</div>
+              <div class="chart-bar highlight" style="height:78%"></div>
+            </div>
+          </div>
+          <div class="chart-axis"></div>
+          <div style="display:flex;gap:5px;padding:0 4px;margin-top:3px;">
+            <div class="chart-year" style="flex:1">1995</div>
+            <div class="chart-year" style="flex:1">2007-08</div>
+            <div class="chart-year" style="flex:1">2011-12</div>
+            <div class="chart-year" style="flex:1">2014-15</div>
+            <div class="chart-year" style="flex:1">2017-18</div>
+            <div class="chart-year" style="flex:1">2022</div>
+          </div>
+          <p class="chart-caption"><em>Figure 1.</em> Age-standardised adult obesity prevalence (%), Australia
+            1995-2022. Adapted from Australian Institute of Health and Welfare. (2024). <em>Overweight and obesity</em>
+            [Web report]. Australian Government.
+            https://www.aihw.gov.au/reports/overweight-obesity/overweight-and-obesity</p>
+        </div>
+
+        <div class="sub-h">Historical Context in Australia</div>
+        <p class="body-text">
+          Structured national surveillance began with the 1995 National Health Survey (NHS). Adult obesity prevalence
+          has risen from <strong>19% in 1995 to 32% in 2022</strong>, a 68% relative increase over 27 years (AIHW,
+          2024). Severe obesity (BMI ≥40) more than doubled from 2.2% in 2007-08 to 4.6% in 2022-23 (Obesity Evidence
+          Hub, 2024). This trajectory reflects Australia's broader <em>epidemiological transition</em>, in which chronic
+          NCDs have progressively displaced infectious diseases as the dominant cause of morbidity and mortality (AIHW,
+          2024).
+        </p>
+      </div>
+
+      <!-- ══════════ COLUMN 3: DETERMINANTS ══════════ -->
+      <div class="col">
+        <div class="sec-heading navy-mid">3. Determinants of Disease Burden</div>
+
+        <p class="det-intro">Three determinants from distinct categories are presented below, reflecting the
+          multifactorial and socially embedded nature of obesity in Australia (Commonwealth of Australia, 2022).</p>
+
+        <!-- Determinant 2: Social -->
+        <div class="det-box d2">
+          <div class="det-header">
+            <div class="det-title">Determinant 2: Social</div>
+            <div class="det-pill">Social</div>
+          </div>
+          <div class="det-body">
+            A clear socioeconomic gradient shapes both the prevalence and burden of obesity across Australia.
+            Australians in the lowest socioeconomic areas carry a disease burden from obesity <strong>2.2 times
+              greater</strong> than those in the highest socioeconomic areas (AIHW, 2021). Social determinants including
+            income, educational attainment, employment status, housing quality and access to healthcare interact to
+            constrain healthy choices and limit health-promoting behaviours. First Nations Australians experience
+            significantly elevated rates: <strong>74% of adults and 38% of children</strong> in 2018-19 (AIHW Indigenous
+            HPF, 2024), rooted in the structural consequences of colonisation, intergenerational socioeconomic
+            disadvantage, systemic racism, and inadequate access to culturally appropriate health services.
+          </div>
+        </div>
+
+        <!-- Determinant 3: Commercial -->
+        <div class="det-box d3">
+          <div class="det-header">
+            <div class="det-title">Determinant 3: Commercial</div>
+            <div class="det-pill">Commercial</div>
+          </div>
+          <div class="det-body">
+            The commercial food environment shapes population-level dietary behaviour through strategic marketing,
+            pricing and distribution of energy-dense, nutrient-poor products. Between 2019 and 2023, advertising
+            expenditure by Australia's food sector <strong>increased by 45%</strong>, with digital platforms enabling
+            highly targeted advertising directed at children and young adults (Australian Government, 2024). No
+            Australian Government regulation currently protects children from unhealthy food marketing; existing
+            industry self-regulation codes have been independently assessed as inadequate (Obesity Evidence Hub, 2024).
+          </div>
+        </div>
+
+        <div class="temporal-box">
+          <p>Obesity rates have increased across all age groups since 1995, with the steepest rise in adults aged 45-74.
+            A 9-percentage-point geographic gap exists between outer regional and remote communities versus major
+            cities, reflecting differential access to healthy food, health services and recreational infrastructure
+            (AIHW, 2024).</p>
+        </div>
+      </div>
+    </div><!-- end body-grid -->
+
+    <!-- ══ REFERENCE BAND ══ -->
+    <div class="ref-band">
+      <div class="ref-title">References</div>
+      <div class="ref-grid">
+        <div class="ref-item">1. Australian Institute of Health and Welfare (AIHW). (2024). <em>Overweight and
+            obesity</em> [Web report]. Australian Government.
+          https://www.aihw.gov.au/reports/overweight-obesity/overweight-and-obesity</div>
+        <div class="ref-item">2. Australian Institute of Health and Welfare (AIHW). (2024). <em>Australian Burden of
+            Disease Study 2024: Summary.</em> Australian Government.
+          https://www.aihw.gov.au/reports/burden-of-disease/australian-burden-of-disease-study-2024</div>
+        <div class="ref-item">3. Australian Institute of Health and Welfare (AIHW). (2021). <em>Interactive data on risk
+            factor burden.</em> Australian Government.</div>
+        <div class="ref-item">4. AIHW Indigenous Health Performance Framework (HPF). (2024). <em>Measure 2.22:
+            Overweight and obesity.</em> Australian Government.</div>
+        <div class="ref-item">5. Australian Bureau of Statistics (ABS). (2023). <em>National Health Survey 2022.</em>
+          https://www.abs.gov.au/statistics/health/health-conditions-and-risks/waist-circumference-and-bmi/2022</div>
+        <div class="ref-item">6. Commonwealth of Australia. (2022). <em>National Obesity Strategy 2022-2032.</em></div>
+        <div class="ref-item">7. Australian Government Department of Health and Aged Care. (2024). <em>Unhealthy food
+            marketing to children.</em> https://consultations.health.gov.au</div>
+        <div class="ref-item">8. Chung, A., et al. (2022). The commercial determinants of unhealthy diets. <em>PHRP,
+            32</em>(3).</div>
+        <div class="ref-item">9. Obesity Evidence Hub. (2024). <em>Cost impacts of obesity.</em>
+          https://www.obesityevidencehub.org.au/collections/impacts/cost-impacts-of-obesity-and-of-obesity-prevention-measures
+        </div>
+        <div class="ref-item">10. Swinburn, B., et al. (1999). Dissecting obesogenic environments.
+          <em>Prev Med, 29</em>(6).
+        </div>
+        <div class="ref-item">11. World Health Organization (WHO). (2000). <em>Obesity: Preventing and managing the
+            global epidemic.</em></div>
+      </div>
+    </div>
+
+  </div><!-- end poster -->
+  <button class="download-btn" id="downloadBtn" data-html2canvas-ignore="true">
+    <svg viewBox="0 0 24 24">
+      <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+    </svg>
+    Download as PNG
+  </button>
+
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', function () {
+      const btn = this;
+      const poster = document.querySelector('.poster');
+
+      // Update UI state
+      btn.classList.add('downloading');
+      btn.innerHTML = 'Generating Image...';
+
+      // Use html2canvas to capture the poster
+      html2canvas(poster, {
+        scale: 2, // Higher quality
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#FFFFFF',
+        width: poster.offsetWidth,
+        height: poster.offsetHeight,
+        windowWidth: poster.offsetWidth,
+        windowHeight: poster.offsetHeight,
+        x: 0,
+        y: 0,
+        scrollX: 0,
+        scrollY: 0
+      }).then(canvas => {
+        // Create download link
+        const link = document.createElement('a');
+        link.download = 'Obesity_in_Australia_Poster.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+
+        // Reset UI state
+        btn.classList.remove('downloading');
+        btn.innerHTML = `
+          <svg viewBox="0 0 24 24">
+            <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+          </svg>
+          Download as PNG
+        `;
+      }).catch(err => {
+        console.error('Download failed:', err);
+        btn.classList.remove('downloading');
+        btn.innerHTML = 'Error! Try Again';
+        setTimeout(() => {
+          btn.innerHTML = `
+            <svg viewBox="0 0 24 24">
+              <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+            </svg>
+            Download as PNG
+          `;
+        }, 3000);
+      });
+    });
+  </script>
+</body>
+
+</html>
